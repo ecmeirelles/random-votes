@@ -1,26 +1,24 @@
 import React, { Component } from "react";
 import { Table, Radio, Progress } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {selectAChoice} from "../redux/actions";
 
 class Details extends Component {
-  state = {
-    choiceSelected: undefined
-  };
-
   getChoiceIdFromUrl = (url) => {
     const tempId = url.split("choices/");
     return tempId[tempId.length-1];
   };
 
   handleChange = (choiceSelected) => {
-    this.setState({ choiceSelected: this.getChoiceIdFromUrl(choiceSelected) })
+    const { selectAChoiceD } = this.props;
+    selectAChoiceD(this.getChoiceIdFromUrl(choiceSelected))
   };
 
   render() {
-    const { question } = this.props;
-    const { choiceSelected } = this.state;
+    const { question, choiceSelected } = this.props;
     const totalVotes = question && question.choices.map(item => item.votes).reduce((prev, next) => prev + next);
-    const votesPercentage = (amount) => (amount/totalVotes * 100).toFixed(2);
+    const votesPercentage = (amount) => amount > 0 ? (amount/totalVotes * 100).toFixed(2) : amount;
     return (
       <Table unstackable>
         <Table.Body>
@@ -51,4 +49,12 @@ Details.propTypes = {
   question: PropTypes.object.isRequired
 };
 
-export default Details;
+export default connect(
+    (state) => ({
+      question: state.question.question,
+      choiceSelected: state.question.choiceSelected
+    }),
+    (dispatch) => ({
+      selectAChoiceD: (id) => dispatch(selectAChoice(id))
+    })
+)(Details);

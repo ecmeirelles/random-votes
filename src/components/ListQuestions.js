@@ -1,19 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Grid, Button } from "semantic-ui-react";
-import fetchQuestions from "../services/fetchQuestions";
 import EachQuestion from "./EachQuestion";
 import Loading from "./shared/Loading";
 import NoResults from "./shared/NoResults";
+import { fetchAllQuestions } from "../redux/actions";
 
 class ListQuestions extends Component {
-  state = {
-    questions: null
-  };
-
   componentDidMount() {
-    fetchQuestions().then((questions) => {
-      this.setState({ questions });
-    });
+    const { fetchQuestionsD } = this.props;
+    fetchQuestionsD();
   };
 
   render() {
@@ -29,7 +25,7 @@ class ListQuestions extends Component {
   }
 
   list() {
-    const { questions } = this.state;
+    const { questions } = this.props;
     if (questions == null) {
       return <Loading/>
     }
@@ -50,4 +46,11 @@ class ListQuestions extends Component {
   }
 }
 
-export default ListQuestions;
+export default connect(
+  (state) => ({
+    questions: state.questions.questions
+  }),
+  (dispatch) => ({
+    fetchQuestionsD: () => dispatch(fetchAllQuestions())
+  })
+)(ListQuestions);
