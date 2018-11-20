@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import HeaderWithBack from "./HeaderWithBack";
 
 class CreateQuestion extends Component {
   render() {
     return (
         <div>
-          <h3>Create Question</h3>
+          <HeaderWithBack backTo="/" pageTitle="Create Question"/>
         </div>
     );
   }

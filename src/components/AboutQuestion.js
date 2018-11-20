@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import fetchQuestionById from "../services/fetchQuestionById";
 import { Table, Radio, Progress, Button } from "semantic-ui-react";
+import HeaderWithBack from "./HeaderWithBack";
 
 class AboutQuestion extends Component {
   state = {
@@ -18,7 +19,7 @@ class AboutQuestion extends Component {
     const votesPercentage = (amount) => (amount/totalVotes * 100).toFixed(2);
     return (
         <div style={{ padding: '1em' }}>
-          <h1>Question Details</h1>
+          <HeaderWithBack backTo="/" pageTitle="Question Details"/>
           { !!question &&
             <div style={{ width: '50vw', margin: 'auto' }}>
               <h3>Question: { question.question }</h3>
