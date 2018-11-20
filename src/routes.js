@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import ListQuestions from "./components/ListQuestions";
 import AboutQuestion from "./components/AboutQuestion";
-import Page404 from "./components/Page404";
+import Page404 from "./components/shared/Page404";
 import CreateQuestion from "./components/CreateQuestion";
 
 class Routes extends Component {

@@ -8,7 +8,7 @@ class Loading extends Component {
     return (
       <div style={containerStyle}>
         <Loader active inline="centered" />
-        <p style={{ marginTop: 8, textAlign: "center" }}>
+        <p className="loading">
           Loading
         </p>
       </div>

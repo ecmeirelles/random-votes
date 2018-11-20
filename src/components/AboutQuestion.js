@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import fetchQuestionById from "../services/fetchQuestionById";
 import { Button } from "semantic-ui-react";
-import HeaderWithBack from "./HeaderWithBack";
+import HeaderWithBack from "./shared/HeaderWithBack";
 import Details from "./Details";
-import Loading from "./Loading";
+import Loading from "./shared/Loading";
+
+import "../styles/questions.css";
 
 class AboutQuestion extends Component {
   state = {
@@ -19,15 +21,15 @@ class AboutQuestion extends Component {
   render() {
     const { question } = this.state;
     return (
-      <div style={{ padding: '1em' }}>
+      <div className="container">
         <HeaderWithBack backTo="/" pageTitle="Question Details"/>
         { question == null ?
           <Loading/>
             :
-          <div style={{ width: '50vw', margin: 'auto' }}>
+          <div className="details-container" >
             <h3>Question: { question.question }</h3>
             <Details question={question}/>
-            <Button primary style={{ float: 'right', marginBottom: '1em' }}>Save vote</Button>
+            <Button primary className="button--vote">Save vote</Button>
           </div>
         }
       </div>

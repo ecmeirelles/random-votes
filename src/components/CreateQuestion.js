@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HeaderWithBack from "./HeaderWithBack";
+import HeaderWithBack from "./shared/HeaderWithBack";
 
 class CreateQuestion extends Component {
   render() {

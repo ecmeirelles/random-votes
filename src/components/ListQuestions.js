@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Grid, Button } from "semantic-ui-react";
 import fetchQuestions from "../services/fetchQuestions";
 import EachQuestion from "./EachQuestion";
-import Loading from "./Loading";
-import NoResults from "./NoResults";
+import Loading from "./shared/Loading";
+import NoResults from "./shared/NoResults";
 
 class ListQuestions extends Component {
   state = {
@@ -18,9 +18,9 @@ class ListQuestions extends Component {
 
   render() {
     return (
-      <div style={{ padding: "1em" }}>
+      <div className="container">
         <h1>Questions</h1>
-        <div style={{ textAlign: 'right', marginTop: '-1em', marginBottom: '2em' }}>
+        <div className="button--new">
           <Button primary href="/new">+ Question</Button>
         </div>
         { this.list() }
