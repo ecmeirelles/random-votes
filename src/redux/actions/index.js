@@ -7,7 +7,8 @@ import {
   QUESTION_VOTED,
   QUESTION_CREATE,
   QUESTION_CREATED,
-  CHOICE_SELECTED
+  CHOICE_SELECTED,
+  CHANGE_VOTE_SUCCESS
 } from "./types";
 import fetchQuestions from "../../services/fetchQuestions";
 import fetchQuestionById from "../../services/fetchQuestionById";
@@ -67,6 +68,14 @@ export function selectAChoice(id) {
     dispatch({
       type: CHOICE_SELECTED,
       data: id
+    });
+  }
+};
+
+export function changeMessageVisibility() {
+  return (dispatch) => {
+    dispatch({
+      type: CHANGE_VOTE_SUCCESS
     });
   }
 };

@@ -1,8 +1,9 @@
 import {
   QUESTION_VOTED,
   QUESTION_CREATED,
-  QUESTION_FETCHED, 
-  CHOICE_SELECTED
+  QUESTION_FETCHED,
+  CHOICE_SELECTED,
+  CHANGE_VOTE_SUCCESS
 } from "../actions/types";
 import { initialState } from "./index";
 
@@ -36,6 +37,11 @@ export const question = (state = initialState, action) => {
       return {
         ...state,
         choiceSelected: action.data
+      };
+    case CHANGE_VOTE_SUCCESS:
+      return {
+        ...state,
+        voteSuccess: !state.voteSuccess
       };
     default:
       return state;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Table, Radio, Progress } from "semantic-ui-react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {selectAChoice} from "../redux/actions";
+import { connect } from "react-redux";
+import { selectAChoice } from "../redux/actions";
 
 class Details extends Component {
   getChoiceIdFromUrl = (url) => {

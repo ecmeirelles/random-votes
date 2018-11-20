@@ -4,13 +4,23 @@ import { Button, Message } from "semantic-ui-react";
 import HeaderWithBack from "./shared/HeaderWithBack";
 import Loading from "./shared/Loading";
 import Details from "./Details";
-import { fetchQuestionByID, voteOnChoice } from "../redux/actions";
+import { changeMessageVisibility, fetchQuestionByID, voteOnChoice} from "../redux/actions";
 import "../styles/questions.css";
 
 class AboutQuestion extends Component {
   componentDidMount() {
     const { fetchQuestionD, match } = this.props;
     fetchQuestionD(match.params.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { voteSuccess, changeMessageVisibilityD } = this.props;
+    if (voteSuccess !== nextProps.voteSuccess) {
+      window.scrollTo(0, 0);
+    }
+    if (nextProps.voteSuccess) {
+      setTimeout(() => changeMessageVisibilityD(), 1500);
+    }
   }
 
   saveVote = () => {
@@ -53,6 +63,7 @@ export default connect(
     }),
     (dispatch) => ({
       fetchQuestionD: (id) => dispatch(fetchQuestionByID(id)),
-      voteQuestionD: ({ questionId, choiceId }) => dispatch(voteOnChoice({ questionId, choiceId }))
+      voteQuestionD: ({ questionId, choiceId }) => dispatch(voteOnChoice({ questionId, choiceId })),
+      changeMessageVisibilityD: () => dispatch(changeMessageVisibility())
     })
 )(AboutQuestion);
