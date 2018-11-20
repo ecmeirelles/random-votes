@@ -6,10 +6,10 @@ class HeaderWithBack extends Component {
   render() {
     const { backTo, pageTitle } = this.props;
     return (
-        <div>
-          <Link to={backTo}>🢐 Back</Link>
-          <h1>{ pageTitle }</h1>
-        </div>
+      <div>
+        <Link to={backTo}>🢐 Back</Link>
+        <h1>{ pageTitle }</h1>
+      </div>
     );
   }
 }

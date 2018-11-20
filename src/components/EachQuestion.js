@@ -8,12 +8,12 @@ class EachQuestion extends Component {
     const { question } = this.props;
     const numberChoices = (question) => `${ question.choices.length } choices`;
     return (
-        <Card
-          href={ question.url }
-          header={ question.question }
-          meta={ moment(question.published_at).format("MM-DD-YYYY") }
-          description={ numberChoices(question) }
-        />
+      <Card
+        href={ question.url }
+        header={ question.question }
+        meta={ moment(question.published_at).format("MM-DD-YYYY") }
+        description={ numberChoices(question) }
+      />
     );
   }
 }
