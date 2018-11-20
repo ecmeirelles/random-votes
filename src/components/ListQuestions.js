@@ -17,10 +17,8 @@ class ListQuestions extends Component {
   render() {
     const { questions } = this.state;
     return (
-      <div>
-        <h1 style={{ textAlign: "center", marginTop: "1em", marginBottom: "2em" }}>
-          Questions
-        </h1>
+      <div style={{ padding: '1em' }}>
+        <h1>Questions</h1>
         <Grid doubling columns={4}>
           { questions && questions.map(question => (
             <Grid.Column key={ Math.random() }>
