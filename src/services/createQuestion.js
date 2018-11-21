@@ -4,7 +4,7 @@ export default (question) => {
       {
         headers: { Accept: "application/json" },
         method: "POST",
-        data: question
+        body: JSON.stringify(question)
       }
   ).then((response) => {
     if (!response.ok) {
