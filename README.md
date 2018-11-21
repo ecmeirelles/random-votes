@@ -1,6 +1,10 @@
 # Random Votes
 React application created to test the Polls API. Here it's possible to list, create and vote on questions.
 
+### Dependencies
+- Node.js version > 8
+- Yarn
+
 ### Run application
 Open your console and follow the instructions below:
 1. `git clone https://github.com/ecmeirelles/random-votes.git`
